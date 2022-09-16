@@ -1,16 +1,22 @@
-// import {createSlice} from '@reduxjs/toolkit'
+import {createSlice} from '@reduxjs/toolkit'
+
+// const initialState={
+//     tabelnum:null
+// }
 
 
-// const tableNumSlice = createSlice({
-//     name:'tableNum',
-//     instialState:{tableNumSel:null},
-//     reducers:{
-//         passtableNum(state, action){
-//             const tableNumSel=action.payload
-//         }
-//     }
-// })
+const tableNumSlice = createSlice({
+    name:'tableNum',
+    initialState:{tabelNumber:null},
+    reducers:{
+        passtableNum:(state, action)=>{
+            state.tabelNumber=action.payload;
+            console.log(state.tabelNumber);
+        },
+       
+    }
+})
 
-// export const tableActions=tableNumSlice.actions;
+export const tableActions=tableNumSlice.actions;
 
-// export default tableNumSlice
+export default tableNumSlice

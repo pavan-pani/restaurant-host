@@ -1,8 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { filterActions } from '../store/filter-slice';
 
 const Filter = () => {
     const prod=['All Items', 'Rice Items','Cold Drinks', 'Pizza', 'Hot Drinks']
-    const [filter, setFilter] = useState("All Items");
+    //const [filter, setFilter] = useState("All Items");
+    const filter =useSelector((state)=>state.filter.filter);
+    const dispatch=useDispatch()
+
+    const setFilter=(value)=>{
+        dispatch(filterActions.passfilter(value))
+    }
   return (
     <div>
         <center className="mt-2">
@@ -12,9 +20,9 @@ const Filter = () => {
                     <option value={item} key={index}>{item}</option>
                 ))}
             </select>
-            <button className='btn btn-sm btn-primary m-3' onClick={()=>console.log(filter)}>
+            {/* <button className='btn btn-sm btn-primary m-3' onClick={()=>console.log(filter)}>
                 Submit
-            </button>
+            </button> */}
         </center>
     </div>
   )
