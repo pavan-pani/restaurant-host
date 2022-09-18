@@ -6,7 +6,7 @@ import  Order  from './Order'
 const App = () => {
   return (
     <div>
-      <BrowserRouter>
+      <BrowserRouter basename='/restaurant'>
         <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/orders' element={<Order/>}/>

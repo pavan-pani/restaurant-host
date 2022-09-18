@@ -11,9 +11,9 @@ import { useDispatch, useSelector } from 'react-redux';
         <center>
         {ordervalue.length > 0?
         <div className='container'>
-          <div className='row'>
+          {/* <div className='row'> */}
             {ordervalue.map((item)=>(
-              <div className='col-lg-4' style={{padding:"5px"}} key={item.id}>
+              <div className='d-inline-flex p-2' style={{padding:"5px"}} key={item.id}>
                 <div className='card mt-2' style={{width:"18rem",padding:"3px"}}>
                   <img src={item.url} className="card-img-top" style={{width:"400",height:"400"}}></img>
                   <div className='card-body'>
@@ -26,7 +26,7 @@ import { useDispatch, useSelector } from 'react-redux';
               </div>
             ))}
           </div>
-        </div>
+        // </div>
         :
         <div className='h4'> No Order Placed Yet...</div>  
       }

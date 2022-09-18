@@ -58,9 +58,9 @@ const Card = () => {
       <center>
         {data.length > 0?
         <div className='container'>
-          <div className='row'>
+          {/* <div className='row'> */}
             {data.map((item)=>(
-              <div className='col-lg-4' style={{padding:"5px"}} key={item.id}>
+              <div className='d-inline-flex p-2' style={{padding:"5px"}} key={item.id}>
                 <div className='card mt-2' style={{width:"18rem",padding:"3px"}}>
                   <img src={item.url} className="card-img-top" style={{width:"400",height:"400"}}></img>
                   <div className='card-body'>
@@ -72,7 +72,7 @@ const Card = () => {
               </div>
             ))}
           </div>
-        </div>
+        // </div>
         :
         <div className='spinner-border text-primary'></div>  
       }
