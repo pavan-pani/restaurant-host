@@ -9,10 +9,13 @@ const tableNumSlice = createSlice({
     name:'tableNum',
     initialState:{tabelNumber:null},
     reducers:{
-        passtableNum:(state, action)=>{
+        passtableNum(state, action){
             state.tabelNumber=action.payload;
             console.log(state.tabelNumber);
         },
+        resetTableNumber(state){
+            state.tabelNumber=null
+        }
        
     }
 })

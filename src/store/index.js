@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit"; 
 import filterSlice from "./filter-slice";
+import orderSlice from "./order-slice";
 import tableNumSlice from "./tableNumber-slice";
 
 
 const store = configureStore({
     reducer:{
         tableNum:tableNumSlice.reducer,
-        filter:filterSlice.reducer
+        filter:filterSlice.reducer,
+        order:orderSlice.reducer
     }
 })
 

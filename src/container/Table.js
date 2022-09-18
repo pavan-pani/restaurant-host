@@ -18,7 +18,7 @@ const Table = () => {
   return (
     <div>
         <center className='mt-2'>
-          <h4>Please select your table number :</h4>
+          <h4 style={{color:'blue'}}>Please select your table number :</h4>
           {numbers.map((num,index)=>(
                 <div key={index} style={{display:'inline'}}>
                     <button className={tableNumber===num?activeBtn:inActiveBtn} onClick={()=>setNumber(num)}>

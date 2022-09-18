@@ -14,7 +14,7 @@ const Filter = () => {
   return (
     <div>
         <center className="mt-2">
-            <span className='h4'>Filter: </span>
+            <span className='h4' style={{color:'blue'}}>Filter : </span>
             <select name="filter" className='p-1' onChange={(e)=>setFilter(e.target.value)}>
                 {prod.map((item,index)=>(
                     <option value={item} key={index}>{item}</option>

@@ -1,10 +1,32 @@
+import { hover } from '@testing-library/user-event/dist/hover';
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { filterActions } from '../store/filter-slice';
+import { orderActions } from '../store/order-slice';
+import { tableActions } from '../store/tableNumber-slice';
 
 const Card = () => {
   const filter = useSelector((state)=>state.filter.filter);
+  const tableNumber=useSelector(state=>state.tableNum.tabelNumber)
   const [data, setData]=useState([])
   const [clonedata, setClonedata]=useState([])
+
+  const ordervalue =useSelector((state)=>state.order.ordervalue)
+  const dispatch=useDispatch()
+
+  const orderHandler=(id,name,price,url)=>{
+    if(tableNumber!=null){
+      dispatch(orderActions.addOrder({id,name,price,url,tableNumber}))
+      dispatch(tableActions.resetTableNumber())
+      dispatch(filterActions.resetFilter())
+      alert("Order Placed Successfully...")
+    }
+    else{
+      alert("Please select your table number")
+    }
+  }
+
+  //rendering API
   useEffect(()=>{
     fetch('https://04h4n27hgd.execute-api.us-east-1.amazonaws.com/dev/foodFuntion').then(
       response =>response.json()
@@ -30,7 +52,7 @@ const Card = () => {
     }
   },[filter])
 
-  
+
   return (
     <div>
       <center>
@@ -38,13 +60,13 @@ const Card = () => {
         <div className='container'>
           <div className='row'>
             {data.map((item)=>(
-              <div className='col-lg-4' style={{padding:"5px"}}>
+              <div className='col-lg-4' style={{padding:"5px"}} key={item.id}>
                 <div className='card mt-2' style={{width:"18rem",padding:"3px"}}>
                   <img src={item.url} className="card-img-top" style={{width:"400",height:"400"}}></img>
                   <div className='card-body'>
                   <h5 className='card-title'>{item.name}</h5>
                   <div className='card-text'>Rs.{item.price}</div>
-                  <button className='btn btn-primary'>Order</button>
+                  <button className='btn btn-primary' onClick={()=>orderHandler(item.id, item.name, item.price, item.url,)}>Order</button>
                 </div>
                 </div>
               </div>

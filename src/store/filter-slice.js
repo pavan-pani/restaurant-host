@@ -6,10 +6,13 @@ const filterSlice = createSlice({
     name:'filter',
     initialState:{filter:'All Items'},
     reducers:{
-        passfilter:(state, action)=>{
+        passfilter(state, action){
             state.filter=action.payload;
             console.log(state.filter);
         },
+        resetFilter(state){
+            state.filter='All Items'
+        }
        
     }
 })
